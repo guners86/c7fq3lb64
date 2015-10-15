@@ -1,7 +1,8 @@
 class ExpensesController < ApplicationController
   def index
-  	if params[:concept]
-      @expenses = Expense.search(params[:concept]).order("date DESC")
+  	p params
+  	if params[:concept] or params[:category_id]
+      @expenses = Expense.search(params[:concept], params[:category_id]).order("date DESC")
     else
       @expenses = Expense.order("date DESC")
     end     
