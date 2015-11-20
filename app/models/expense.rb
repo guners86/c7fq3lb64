@@ -1,5 +1,6 @@
 class Expense < ActiveRecord::Base
   belongs_to :category
+  belongs_to :user
 
   # Metodo para la busqueda de productos por titulo o cuerpo de la pregunta
   def self.search(concept, category_id)
