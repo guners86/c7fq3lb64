@@ -3,11 +3,11 @@ class Expense < ActiveRecord::Base
   belongs_to :user
 
   # Metodo para la busqueda de productos por titulo o cuerpo de la pregunta
-  def self.search(concept, category_id)
+  def self.search(user_id, concept, category_id)
     if category_id != 0
-      where("concept like ? AND category_id = ?", "%#{concept}%", "#{category_id}") 
+      where("user_id = ? AND concept like ? AND category_id = ?", "#{user_id}", "%#{concept}%", "#{category_id}") 
     else
-      where("concept like ? ", "%#{concept}%") 
+      where("user_id = ? AND concept like ? ", "#{user_id}", "%#{concept}%") 
     end
   end
 end
